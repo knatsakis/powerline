@@ -23,13 +23,13 @@ def ctrlp(matcher_info):
 		'''
 		function! Ctrlp_status_main(focus, byfname, regex, prev, item, next, marked)
 			let g:_powerline_ctrlp_status = {\
-			'focus': a:focus,\
-			'byfname': a:byfname,\
-			'regex': a:regex,\
-			'prev': a:prev,\
-			'item': a:item,\
-			'next': a:next,\
-			'marked': a:marked,\
+				'focus': a:focus,\
+				'byfname': a:byfname,\
+				'regex': a:regex,\
+				'prev': a:prev,\
+				'item': a:item,\
+				'next': a:next,\
+				'marked': a:marked,\
 			}
 			return ''
 		endfunction
@@ -46,9 +46,9 @@ def ctrlp(matcher_info):
 	vim.command(
 		'''
 		let g:ctrlp_status_func = {\
-		'main': 'Ctrlp_status_main',\
-		'prog': 'Ctrlp_status_prog',\
-	}
+			'main': 'Ctrlp_status_main',\
+			'prog': 'Ctrlp_status_prog',\
+		}
 		'''
 	)
 	return result
