@@ -23,6 +23,7 @@ def marked(pl):
         'contents': status['marked'].strip()
     }]
 
+
 def mode(pl):
     '''Returns current mode.
 
@@ -35,6 +36,7 @@ def mode(pl):
         'highlight_groups': ['ctrlp:status'],
         'contents': ' ' + status['item'] + ' '
     }]
+
 
 def mode_prev(pl):
     '''Returns previous mode.
@@ -49,6 +51,7 @@ def mode_prev(pl):
         'contents': status['prev'] + ' '
     }]
 
+
 def mode_next(pl):
     '''Returns next mode.
 
@@ -61,6 +64,7 @@ def mode_next(pl):
         'highlight_groups': ['ctrlp:status_other'],
         'contents': ' ' + status['next'] + ' '
     }]
+
 
 def prog(pl):
     '''Returns progress status.
