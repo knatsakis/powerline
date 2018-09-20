@@ -1,4 +1,4 @@
-# vim:fileencoding=utf-8
+# vim:fileencoding=utf-8:noet
 from __future__ import (absolute_import, division, print_function,
 						unicode_literals)
 
