@@ -38,7 +38,7 @@ def ctrlp(matcher_info):
 	vim.command(
 		'''
 		function! Ctrlp_status_prog(str)
-			let g:_powerline_ctrlp_status['prog'] = a:str
+			let g:_powerline_ctrlp_status.prog = a:str
 			return ''
 		endfunction
 		'''
