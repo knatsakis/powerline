@@ -15,9 +15,9 @@ def marked(pl):
 	Highlight groups used: ``ctrlp:marked``.
 	'''
 	status = vim_getvar('_powerline_ctrlp_status')
-	if 'prog' in status:
+	if 'prog' in status or status['marked'] == ' <->':
 		return None
-	return None if status['marked'] == ' <->' else [{
+	return [{
 		'highlight_groups': ['ctrlp:marked'],
 		'contents': status['marked'].strip()
 	}]
