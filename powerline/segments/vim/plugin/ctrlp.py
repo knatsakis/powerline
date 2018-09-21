@@ -16,7 +16,7 @@ def marked(pl):
 	'''
 	status = vim_getvar('_powerline_ctrlp_status')
 	if 'prog' in status:
-		return []
+		return None
 	return None if status['marked'] == ' <->' else [{
 		'highlight_groups': ['ctrlp:marked'],
 		'contents': status['marked'].strip()
@@ -30,7 +30,7 @@ def mode(pl):
 	'''
 	status = vim_getvar('_powerline_ctrlp_status')
 	if 'prog' in status:
-		return []
+		return None
 	return [{
 		'highlight_groups': ['ctrlp:status'],
 		'contents': ' ' + status['item'] + ' '
@@ -44,7 +44,7 @@ def mode_prev(pl):
 	'''
 	status = vim_getvar('_powerline_ctrlp_status')
 	if 'prog' in status:
-		return []
+		return None
 	return [{
 		'highlight_groups': ['ctrlp:status_other'],
 		'contents': status['prev'] + ' '
@@ -58,7 +58,7 @@ def mode_next(pl):
 	'''
 	status = vim_getvar('_powerline_ctrlp_status')
 	if 'prog' in status:
-		return []
+		return None
 	return [{
 		'highlight_groups': ['ctrlp:status_other'],
 		'contents': ' ' + status['next'] + ' '
@@ -72,7 +72,7 @@ def prog(pl):
 	'''
 	status = vim_getvar('_powerline_ctrlp_status')
 	if 'prog' not in status:
-		return []
+		return None
 	return [{
 		'highlight_groups': ['ctrlp:prog'],
 		'contents': status['prog']
