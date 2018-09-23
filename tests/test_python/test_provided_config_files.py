@@ -54,7 +54,7 @@ class TestVimConfig(TestCase):
 			(('bufname', 'NERD_tree_1'), {}),
 			(('bufname', '__Gundo__'), {}),
 			(('bufname', '__Gundo_Preview__'), {}),
-			# No CtrlP tests here: emulation
+			# No CtrlP tests here: requires emulation
 			# No Command-T tests here: requires +ruby or emulation
 			# No tabline here: tablines are tested separately
 		)
