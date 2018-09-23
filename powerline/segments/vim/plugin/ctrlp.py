@@ -9,6 +9,49 @@ except ImportError:
 from powerline.bindings.vim import vim_getvar
 
 
+initialized = False
+
+
+def initialize(pl, shutdown_event):
+	global initialized
+	if initialized:
+		return
+	initialized = True
+	vim.command('let g:_powerline_ctrlp_status = {}')
+	vim.command(
+		'''
+		function! Ctrlp_status_main(focus, byfname, regex, prev, item, next, marked)
+			let g:_powerline_ctrlp_status = {\
+				'focus': a:focus,\
+				'byfname': a:byfname,\
+				'regex': a:regex,\
+				'prev': a:prev,\
+				'item': a:item,\
+				'next': a:next,\
+				'marked': a:marked,\
+			}
+			return ''
+		endfunction
+		'''
+	)
+	vim.command(
+		'''
+		function! Ctrlp_status_prog(str)
+			let g:_powerline_ctrlp_status.prog = a:str
+			return ''
+		endfunction
+		'''
+	)
+	vim.command(
+		'''
+		let g:ctrlp_status_func = {\
+			'main': 'Ctrlp_status_main',\
+			'prog': 'Ctrlp_status_prog',\
+		}
+		'''
+	)
+
+
 def marked(pl):
 	'''Returns boolean indicating whether anything is marked or not.
 
@@ -21,6 +64,7 @@ def marked(pl):
 		'highlight_groups': ['ctrlp:marked'],
 		'contents': status['marked'].strip()
 	}]
+marked.startup = initialize
 
 
 def mode(pl):
@@ -35,6 +79,7 @@ def mode(pl):
 		'highlight_groups': ['ctrlp:status'],
 		'contents': ' ' + status['item'] + ' '
 	}]
+mode.startup = initialize
 
 
 def mode_prev(pl):
@@ -49,6 +94,7 @@ def mode_prev(pl):
 		'highlight_groups': ['ctrlp:status_other'],
 		'contents': status['prev'] + ' '
 	}]
+mode_prev.startup = initialize
 
 
 def mode_next(pl):
@@ -63,6 +109,7 @@ def mode_next(pl):
 		'highlight_groups': ['ctrlp:status_other'],
 		'contents': ' ' + status['next'] + ' '
 	}]
+mode_next.startup = initialize
 
 
 def prog(pl):
@@ -77,3 +124,4 @@ def prog(pl):
 		'highlight_groups': ['ctrlp:prog'],
 		'contents': status['prog']
 	}]
+prog.startup = initialize
