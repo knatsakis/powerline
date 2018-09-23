@@ -58,7 +58,7 @@ def marked(pl):
 	Highlight groups used: ``ctrlp:marked``.
 	'''
 	status = vim_getvar('_powerline_ctrlp_status')
-	if 'prog' in status or status['marked'] == ' <->':
+	if 'prog' in status or 'marked' not in status or status['marked'] == ' <->':
 		return None
 	return [{
 		'highlight_groups': ['ctrlp:marked'],
@@ -73,7 +73,7 @@ def mode(pl):
 	Highlight groups used: ``ctrlp:status``.
 	'''
 	status = vim_getvar('_powerline_ctrlp_status')
-	if 'prog' in status:
+	if 'prog' in status or 'item' not in status:
 		return None
 	return [{
 		'highlight_groups': ['ctrlp:status'],
@@ -88,7 +88,7 @@ def mode_prev(pl):
 	Highlight groups used: ``ctrlp:status_other``.
 	'''
 	status = vim_getvar('_powerline_ctrlp_status')
-	if 'prog' in status:
+	if 'prog' in status or 'prev' not in status:
 		return None
 	return [{
 		'highlight_groups': ['ctrlp:status_other'],
@@ -103,7 +103,7 @@ def mode_next(pl):
 	Highlight groups used: ``ctrlp:status_other``.
 	'''
 	status = vim_getvar('_powerline_ctrlp_status')
-	if 'prog' in status:
+	if 'prog' in status or 'next' not in status:
 		return None
 	return [{
 		'highlight_groups': ['ctrlp:status_other'],
