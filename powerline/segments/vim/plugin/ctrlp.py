@@ -41,6 +41,9 @@ def initialize(pl, shutdown_event):
 			'main': 'Ctrlp_status_main',\
 			'prog': 'Ctrlp_status_prog',\
 		}
+
+		call ctrlp#call('s:opts')
+		call ctrlp#statusline()
 		'''
 	)
 
