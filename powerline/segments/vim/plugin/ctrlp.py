@@ -17,7 +17,6 @@ def initialize(pl, shutdown_event):
 	if initialized:
 		return
 	initialized = True
-	vim.command('let g:_powerline_ctrlp_status = {}')
 	vim.command(
 		'''
 		function! Ctrlp_status_main(focus, byfname, regex, prev, item, next, marked)
@@ -32,18 +31,12 @@ def initialize(pl, shutdown_event):
 			}
 			return ''
 		endfunction
-		'''
-	)
-	vim.command(
-		'''
+
 		function! Ctrlp_status_prog(str)
 			let g:_powerline_ctrlp_status.prog = a:str
 			return ''
 		endfunction
-		'''
-	)
-	vim.command(
-		'''
+
 		let g:ctrlp_status_func = {\
 			'main': 'Ctrlp_status_main',\
 			'prog': 'Ctrlp_status_prog',\
